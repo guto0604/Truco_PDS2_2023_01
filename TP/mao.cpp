@@ -95,7 +95,7 @@ void Mao::pedir_doze(){
  * 
  * @return A dupla vencedora da mão.
  */
-Dupla Mao::comecar_mao(){
+void Mao::comecar_mao(){
     Jogador mao = ordem[1]; /**< O jogador que começa a mão. */
     bool resultado;
     for(int i = 1; i < 3; i++){
