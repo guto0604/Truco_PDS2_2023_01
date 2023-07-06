@@ -16,7 +16,7 @@ Carta::Carta(int numero, std::string naipe){
     this->naipe = naipe;
     ja_jogada = false;
     
-    if(numero >= 4 && numero < 8){
+    if(numero >= 4 && numero <= 10){
         valor = numero - 3;
     }
     else{
@@ -31,15 +31,6 @@ Carta::Carta(int numero, std::string naipe){
     valor = 12;
 } else if (numero == 7 && naipe == "ouros") {
     valor = 11;
-} else if (numero == 8) {
-    valor = 10;
-} else if (numero == 9) {
-    valor = 11;
-} else if(numero == 10) {
-    valor = 12;
-}
-
-}
 
 /**
  * @brief Entrega a carta a um jogador.
