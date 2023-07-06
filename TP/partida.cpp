@@ -1,10 +1,20 @@
 #include "partida.h"
 #include <iostream>
 
+Partida::Partida(std::vector<Jogador> jogadores){
+    Dupla duplas();
+    for(int i = 0; i<jogadores.size(); i++){
+        this->jogadores.copy(jogadores[i]);
+    }
+    dupla[0](jogadores[0], jogadores[2]);
+    dupla[1](jogadores[1], jogadores[3]);
+    rodada = 0;
+}
+
 bool Partida::setRodada(){
     rodada +=1;
-    if(rodada == 5){
-        rodada = 1;
+    if(rodada == 4){
+        rodada = 0;
     }
 }
 
@@ -55,4 +65,22 @@ Jogador Partida::getJogador(int jogador){
 
 Dupla Partida::getDupla(int i){
     return dupla[i];
+}
+
+
+void Partida::iniciarPartida(){
+    while(true){
+        Mao mao(jogadores[rodada], this);
+        mao.comecar_mao();
+        if(mao.getVencedor() != nullptr){
+            mao.fim_mao();
+        }
+        if(verificarVencedor){
+            imprimirParabens();
+            imprimirTrofeu();
+            imprimirPartida();
+            break;
+        }
+        setRodada();
+    }
 }

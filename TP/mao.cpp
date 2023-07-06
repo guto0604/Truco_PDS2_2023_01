@@ -79,13 +79,17 @@ Dupla Mao::comecar_mao(){
         }
         for(int i = 0; i < 1; i++){
             if(rodadasVencidas[i] >= pontuacaoAlvo){
-                return partida.getDupla(i);
+                vencedor = partida.getDupla(i);
             }
         }
     }
-    return nullptr;
 }
 
-void Mao::fim_mao(Dupla vencedor){
+void Mao::fim_mao(){
     partida.incrementarPontuacaoDupla(vencedor, pontuacao);
+}
+
+
+Dupla Mao::getVencedor(){
+    return vencedor;
 }

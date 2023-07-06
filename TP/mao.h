@@ -18,6 +18,7 @@ private:
     Partida partida;
     std::vector<Jogador> ordem;
     std::map<int, int> rodadasVencidas;
+    Dupla vencedor;
     int rodada;
     int pontuacaoAlvo; //Numero de rodadas a serem venciadas para a mão ser ganha;
     int pontuacao;
@@ -34,8 +35,9 @@ public:
     void pedir_seis();
     void pedir_nove();
     void pedir_doze();
-    Dupla comecar_mao();
-    void fim_mao(Dupla vencedor);
+    void comecar_mao();
+    void fim_mao();
+    Dupla getVencedor();
 
 };
 
