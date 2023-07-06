@@ -13,14 +13,20 @@ bool Partida::incrementarPontuacaoDupla(Dupla dupla, int pontos) {
 }
 
 bool Partida::verificarVencedor() const {
-    return dupla1.getPontuacao() >= 12 || dupla2.getPontuacao() >= 12;
+    for(int i = 0; i < dupla.size(); i++){
+        if (dupla[i].getPontuacao() >= 12) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Partida::imprimirParabens() const {
-    if (dupla1.getPontuacao() >= 12) {
-        std::cout << "Parabéns à Dupla " << dupla1.getNome() << " (" << dupla1.getPontuacao() << " pontos)!" << std::endl;
-    } else if (dupla2.getPontuacao() >= 12) {
-        std::cout << "Parabéns à Dupla " << dupla1.getNome() << " (" << dupla1.getPontuacao() << " pontos)!" << std::endl;
+    for(int i = 0; i < dupla.size(); i++){
+        if (dupla[i].getPontuacao() >= 12) {
+            std::cout << "Parabéns à Dupla " << dupla[i].getNome() << " (" << dupla[i].getPontuacao() << " pontos)!" << std::endl;
+            break;
+        }
     }
 }
 
@@ -38,6 +44,15 @@ void Partida::imprimirTrofeu() const {
 
 void Partida::imprimirPartida() const {
     std::cout << "Partida:" << std::endl;
-    std::cout << dupla1.getNome() << ": " << dupla1.getPontuacao() << " pontos" << std::endl;
-    std::cout << dupla2.getNome() << ": " << dupla2.getPontuacao() << " pontos" << std::endl;
+    for(int i = 0; i < dupla.size(); i++){
+        std::cout << dupla[i].getNome() << ": " << dupla[i].getPontuacao() << " pontos" << std::endl;
+    }
+}
+
+Jogador Partida::getJogador(int jogador){
+    return jogadores[jogador];
+}
+
+Dupla Partida::getDupla(int i){
+    return dupla[i];
 }

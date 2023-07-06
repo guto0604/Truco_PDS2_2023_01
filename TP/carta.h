@@ -10,7 +10,10 @@
 class Carta{
 public:
     Carta(int numero, std::string naipe);
-    
+    void entregarCarta(Jogador jogador);
+    int getValor();
+    std::string getCarta();
+    bool jogada();
 
 private:
 
@@ -18,6 +21,7 @@ private:
     std::string naipe;
     int valor;
     Jogador jogador;
+    bool ja_jogada;
 
 };
 

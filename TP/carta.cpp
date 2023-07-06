@@ -3,6 +3,7 @@
 Carta::Carta(int numero, std::string naipe){
     this->numero = numero;
     this->naipe = naipe;
+    ja_jogada = false;
     
     if(numero >= 4 & numero < 10){
         valor = numero - 3;
@@ -21,4 +22,22 @@ Carta::Carta(int numero, std::string naipe){
         valor = 11;
     }
 
+}
+
+void Carta::entregarCarta(Jogador jogador){
+    this->jogador = jogador;
+}
+
+int Carta::getValor(){
+    return valor;
+}
+    
+std::string Carta::getCarta(){
+    std::ostringstream texto;
+    texto << numero << " de " << naipe;
+    return texto.str();
+}
+
+bool Carta::jogada(){
+    return ja_jogada;
 }
