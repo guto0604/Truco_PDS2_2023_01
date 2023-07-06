@@ -25,12 +25,14 @@ Carta::Carta(int numero, std::string naipe){
 
     if (numero == 4 && naipe == "paus") {
     valor = 14;
-} else if (numero == 7 && naipe == "copas") {
-    valor = 13;
-} else if (numero == 1 && naipe == "espadas") {
-    valor = 12;
-} else if (numero == 7 && naipe == "ouros") {
-    valor = 11;
+    } else if (numero == 7 && naipe == "copas") {
+        valor = 13;
+    } else if (numero == 1 && naipe == "espadas") {
+        valor = 12;
+    } else if (numero == 7 && naipe == "ouros") {
+        valor = 11;
+    }
+}
 
 /**
  * @brief Entrega a carta a um jogador.
@@ -59,15 +61,15 @@ std::string Carta::getCarta(){
     std::ostringstream texto;
     if (numero == 8) {
     texto << "Q de " << naipe;
-} else if (numero == 9) {
-    texto << "J de " << naipe;
-} else if (numero == 10) {
-    texto << "K de " << naipe;
-} else if (numero == 1) {
-    texto << "A de " << naipe;
-}else {
-    texto << numero << " de " << naipe;
-}
+    } else if (numero == 9) {
+        texto << "J de " << naipe;
+    } else if (numero == 10) {
+        texto << "K de " << naipe;
+    } else if (numero == 1) {
+        texto << "A de " << naipe;
+    }else {
+        texto << numero << " de " << naipe;
+    }
     return texto.str();
 }
 

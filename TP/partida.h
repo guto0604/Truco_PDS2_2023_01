@@ -23,8 +23,10 @@ private:
     int rodada; /**< O número da rodada atual. */
 
 public:
+    Partida(); /**< Construtor padrão da classe Partida. */
     Partida(std::vector<Jogador> jogadores); /**< Construtor da classe Partida. */
-    Partida(const std::string& nomeDupla1, const std::string& nomeDupla2); /**< Construtor da classe Partida. */
+    void copy(Partida p);
+    void definirDuplas();
     Dupla getDupla(int i); /**< Obtém a dupla com o índice especificado. */
     bool setRodada(); /**< Define a próxima rodada. */
     void iniciarMao(); /**< Inicia uma mão. */

@@ -20,6 +20,22 @@
 class Dupla{
 public:
     /**
+     * @brief Construtor da classe Dupla.
+     * 
+     * @param j1 O primeiro jogador da dupla.
+     * @param j2 O segundo jogador da dupla.
+     */
+    Dupla(Jogador j1, Jogador j2);
+
+    /**
+     * @brief Construtor da classe Dupla.
+     * 
+     * @param nome O nome da dupla.
+     * @param j1 O primeiro jogador da dupla.
+     * @param j2 O segundo jogador da dupla.
+     */
+    Dupla(std::string nome, Jogador j1, Jogador j2);
+    /**
      * @brief Obtém a pontuação da dupla.
      * 
      * @return A pontuação da dupla.
@@ -50,22 +66,6 @@ public:
     std::string getNome() const;
 
 private:
-    /**
-     * @brief Construtor da classe Dupla.
-     * 
-     * @param j1 O primeiro jogador da dupla.
-     * @param j2 O segundo jogador da dupla.
-     */
-    Dupla(Jogador j1, Jogador j2);
-
-    /**
-     * @brief Construtor da classe Dupla.
-     * 
-     * @param nome O nome da dupla.
-     * @param j1 O primeiro jogador da dupla.
-     * @param j2 O segundo jogador da dupla.
-     */
-    Dupla(std::string nome, Jogador j1, Jogador j2);
 
     std::pair<Jogador, Jogador> dupla; /**< Os jogadores que formam a dupla. */
     int pontuacao; /**< A pontuação da dupla. */

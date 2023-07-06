@@ -5,6 +5,14 @@
 
 #include "partida.h"
 #include <iostream>
+/**
+ * @brief Construtor padrão da classe Partida.
+ * 
+ * @param 
+ */
+Partida::Partida(){
+    rodada = 0; /**< O número da rodada atual. */
+}
 
 /**
  * @brief Construtor da classe Partida.
@@ -14,11 +22,25 @@
 Partida::Partida(std::vector<Jogador> jogadores){
     Dupla duplas(); /**< As duplas que participam da partida. */
     for(int i = 0; i<jogadores.size(); i++){
-        this->jogadores.copy(jogadores[i]); /**< Copia os dados de cada jogador. */
+        this->jogadores[i] = jogadores[i]; /**< Copia os dados de cada jogador. */
     }
-    dupla[0](jogadores[0], jogadores[2]); /**< Define a primeira dupla com os jogadores 0 e 2. */
-    dupla[1](jogadores[1], jogadores[3]); /**< Define a segunda dupla com os jogadores 1 e 3. */
+    definirDuplas();
     rodada = 0; /**< O número da rodada atual. */
+}
+
+void Partida::copy(Partida p){
+    for(int i = 0; i < 2; i++){
+        jogadores[i] = p.getJogador(i);
+    }
+    definirDuplas();
+}
+
+void Partida::definirDuplas(){
+    for (int i = 0; i < 2; i++){
+        Dupla d(jogadores[i], jogadores[i+2]);
+        dupla[i] = d;
+    }
+    
 }
 
 /**

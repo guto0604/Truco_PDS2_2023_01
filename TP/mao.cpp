@@ -12,10 +12,11 @@
  * @param embaralhou O jogador que embaralhou as cartas.
  * @param partida A partida em que a mão está sendo jogada.
  */
-Mao::Mao(Jogador embaralhou, Partida partida){
+Mao::Mao(Jogador embaralhou, Partida p){
     Baralho baralho(); /**< O baralho de cartas. */
+    Partida partida();
     Jogador embaralhou(); /**< O jogador que embaralhou as cartas. */
-    this->partida = partida; /**< A partida em que a mão está sendo jogada. */
+    partida.copy(p); /**< A partida em que a mão está sendo jogada. */
     this->embaralhou.copy(embaralhou); /**< Copia os dados do jogador embaralhou. */
     rodada = 1; /**< O número da rodada atual. */
     for(int i = 0; i < 1; i++){
@@ -106,9 +107,9 @@ void Mao::comecar_mao(){
         r.definirOrdem(); /**< Define a ordem de jogada na rodada. */
         mao = r.jogar(); /**< Realiza a rodada e obtém o próximo jogador da mão. */
         if(r.getResultado()){
-            Jogador vencedor(); /**< O jogador vencedor da rodada. */
-            vencedor.copy(r.getVencedor()); /**< Copia os dados do jogador vencedor. */
-            rodadasVencidas<vencedor.getDupla()> += 1; /**< Incrementa o número de rodadas vencidas pela dupla do jogador vencedor. */
+            Jogador vencedor = r.getVencedor(); /**< O jogador vencedor da rodada. */
+            int duplaVencedora = vencedor.getDupla();
+            rodadasVencidas[duplaVencedora] += 1; /**< Incrementa o número de rodadas vencidas pela dupla do jogador vencedor. */
         }
         else{
             pontuacaoAlvo = 1; /**< Define a pontuação alvo como 1 caso a rodada termine em empate. */

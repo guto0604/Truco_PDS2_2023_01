@@ -32,7 +32,8 @@ int main() {
                 std::cout << "Digite o nome do Jogador " << i+1 << ": ";
                 std::string nome;
                 std::cin >> nome;
-                jogadores[i](i, nome, i%2);
+                Jogador j(i, nome, i%2);
+                jogadores[i] = j;
             }
 
             Partida p(jogadores);
