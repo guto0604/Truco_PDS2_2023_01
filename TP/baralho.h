@@ -1,3 +1,8 @@
+/**
+ * @file baralho.h
+ * @brief Definição da classe Baralho
+ */
+
 #ifndef BARALHO_H
 #define BARALHO_H
 
@@ -7,14 +12,17 @@
 
 #include "carta.h"
 
+/**
+ * @brief Classe que representa um baralho de cartas.
+ */
 class Baralho{
 public:
-    Baralho();
-    void embaralhar();
-    Carta darCarta(int carta);
+    Baralho(); /**< Construtor da classe Baralho. */
+    void embaralhar(); /**< Embaralha as cartas do baralho. */
+    Carta darCarta(int carta); /**< Distribui uma carta do baralho. */
 
 private:
-    std::vector<Carta> baralho;
+    std::vector<Carta> baralho; /**< O vetor de cartas do baralho. */
 
 };
 

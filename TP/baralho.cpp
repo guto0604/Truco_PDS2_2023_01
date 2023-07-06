@@ -1,7 +1,18 @@
+/**
+ * @file baralho.cpp
+ * @brief Implementação da classe Baralho
+ */
+
 #include "baralho.h"
 #include <cstdlib>
 #include <ctime>
 
+/**
+ * @brief Construtor da classe Baralho.
+ * 
+ * Cria um novo baralho de cartas com 40 cartas, 
+ * cada uma contendo um número e um naipe.
+ */
 Baralho::Baralho() {
     
     std::vector<Carta> cartas;
@@ -24,6 +35,12 @@ Baralho::Baralho() {
     
 }
 
+/**
+ * @brief Embaralha o baralho de cartas.
+ * 
+ * Utiliza o algoritmo Fisher-Yates para embaralhar as cartas no baralho.
+ * A função `rand()` é utilizada para gerar números aleatórios.
+ */
 void Baralho::embaralhar(){
 
     unsigned seed = time(0);
@@ -36,6 +53,12 @@ void Baralho::embaralhar(){
 
 }
 
+/**
+ * @brief Retorna uma carta do baralho.
+ * 
+ * @param carta O índice da carta a ser retornada.
+ * @return A carta do baralho correspondente ao índice fornecido.
+ */
 Carta Baralho::darCarta(int carta){
     return baralho[carta];
 }
