@@ -63,7 +63,9 @@ std::string Carta::getCarta(){
     texto << "J de " << naipe;
 } else if (numero == 10) {
     texto << "K de " << naipe;
-} else {
+} else if (numero == 1) {
+    texto << "A de " << naipe;
+}else {
     texto << numero << " de " << naipe;
 }
     return texto.str();
