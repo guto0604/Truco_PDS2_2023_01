@@ -36,3 +36,6 @@ void Baralho::embaralhar(){
 
 }
 
+Carta Baralho::darCarta(int carta){
+    return baralho[carta];
+}

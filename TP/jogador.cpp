@@ -17,3 +17,9 @@ int Jogador::getNumero() const {
 std::string Jogador::getNome() const {
     return nome;
 }
+
+void Jogador::receberCartas(Baralho baralho, int jogada){
+    for(int i = 0; i < 3; i++){
+        cartas[i] = baralho.darCarta((jogada*3 + i));
+    }
+}

@@ -13,8 +13,10 @@ private:
     std::vector<Jogador> ordem;
 
 public:
+    Rodada();
     void darCartas();
-    
+    void definirOrdem();
+
 };
 
 #endif

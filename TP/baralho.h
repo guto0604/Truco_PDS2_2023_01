@@ -10,11 +10,10 @@
 class Baralho{
 public:
     void embaralhar();
-    void darCarta();
+    Carta darCarta(int carta);
 
 
 private:
-
     Baralho();
     std::vector<Carta> baralho;
 

@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "carta.h"
+#include "baralho.h"
 
 class Jogador {
 private:
@@ -18,6 +19,8 @@ public:
     void setNome(const std::string& nome);
     int getNumero() const;
     std::string getNome() const;
+    void receberCartas(Baralho baralho, int jogada);
+
 };
 
 #endif
