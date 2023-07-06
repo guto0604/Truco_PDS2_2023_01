@@ -5,10 +5,19 @@
 #include <map>
 #include <vector>
 
-extern std::map<std::string, int> cartas;
-extern std::vector<std::string> baralho;
+#include "carta.h"
 
-void criarBaralho();
-std::pair<std::string, int> removerCartaAleatoria();
+class Baralho{
+public:
+    void embaralhar();
+    void darCarta();
+
+
+private:
+
+    Baralho();
+    std::vector<Carta> baralho;
+
+};
 
 #endif
