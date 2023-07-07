@@ -85,6 +85,17 @@ Em relação as classes o principal é isso. Os arquivos de definição das clas
 
 O arquivo Main é onde todas Classes são instanciadas e conversam entre si, de maneira a fazer o jogo acontecer. Nele temos a opção de iniciar o jogo e ao final podemos reiniciar o jogo ou finalizar o programa.
 
+## Compilar
+
+Para compilar o arquivo, é necessário clonar (ou baixar) o repositório. Depois disso, via terminal se direcionar para a pasta TP com o comando cd.
+
+A compilação é feita por meio do g++17, conforme orientado, e é a versão que o programa foi desenvolvido. 
+
+Para compilar o programa é necessário executar o comando a seguir dentro da pasta:
+g++ -std=c++17 main.cpp baralho.cpp carta.cpp dupla.cpp jogador.cpp mao.cpp partida.cpp rodada.cpp  -o <nome_binario>
+
+Para executar o programa e jogar, execute:
+.//<nome_binario>
 
 
 Por enquanto é isso. Obrigado
