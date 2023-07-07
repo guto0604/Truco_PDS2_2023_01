@@ -16,8 +16,6 @@ int main() {
     bool jogar = true;
     while(jogar){
 
-        std::cout << "Regras do truco mineiro:";
-
         std::cout << "Deseja jogar uma partida de truco mineiro?";
         std::string resposta;
         std::cin >> resposta;
@@ -37,6 +35,7 @@ int main() {
             }
 
             Partida p(jogadores);
+            p.iniciarPartida();
         }
         
     }

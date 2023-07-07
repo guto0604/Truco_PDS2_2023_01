@@ -26,7 +26,6 @@ private:
     int numero; /**< O número da carta. */
     std::string naipe; /**< O naipe da carta. */
     int valor; /**< O valor da carta. */
-    Jogador jogador; /**< O jogador que possui a carta. */
     bool ja_jogada; /**< Indica se a carta já foi jogada ou não. */
 
 };

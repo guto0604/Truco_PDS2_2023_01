@@ -14,8 +14,6 @@
  */
 Mao::Mao(Jogador embaralhou, Partida partida){
     Baralho baralho(); /**< O baralho de cartas. */
-    Partida partida();
-    Jogador embaralhou(); /**< O jogador que embaralhou as cartas. */
     this->partida = partida; /**< A partida em que a mão está sendo jogada. */
     this->embaralhou = embaralhou; /**< Copia os dados do jogador embaralhou. */
     rodada = 1; /**< O número da rodada atual. */
@@ -100,11 +98,7 @@ void Mao::pedir_doze(){
 void Mao::comecar_mao(){
     Jogador mao = ordem[1]; /**< O jogador que começa a mão. */
     for(int i = 1; i < 3 & !resultado; i++){
-        if(rodada == 1){
-            mao = ordem[1]; /**< Define o jogador mão como o primeiro jogador da ordem. */
-        }
-        Rodada r(rodada, mao, partida); /**< Cria uma nova rodada. */
-        r.definirOrdem(); /**< Define a ordem de jogada na rodada. */
+        Rodada r(mao, partida); /**< Cria uma nova rodada. */
         mao = r.jogar(); /**< Realiza a rodada e obtém o próximo jogador mão. */
         if(r.getResultado()){
             Jogador vencedor = r.getVencedor(); /**< O jogador vencedor da rodada. */
@@ -114,7 +108,7 @@ void Mao::comecar_mao(){
         else{
             pontuacaoAlvo = 1; /**< Define a pontuação alvo como 1 caso a rodada termine em empate. */
         }
-        for(int i = 0; i < 1; i++){
+        for(int i = 0; i < 1; i++){ /**< Testa se a mão já teve um vencedor. */
             if(rodadasVencidas[i] >= pontuacaoAlvo){
                 vencedor = partida.getDupla(i); /**< Obtém a dupla vencedora da mão. */
                 resultado = true;

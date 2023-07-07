@@ -24,7 +24,7 @@ Carta::Carta(int numero, std::string naipe){
     }
 
     if (numero == 4 && naipe == "paus") {
-    valor = 14;
+        valor = 14;
     } else if (numero == 7 && naipe == "copas") {
         valor = 13;
     } else if (numero == 1 && naipe == "espadas") {
@@ -32,15 +32,6 @@ Carta::Carta(int numero, std::string naipe){
     } else if (numero == 7 && naipe == "ouros") {
         valor = 11;
     }
-}
-
-/**
- * @brief Entrega a carta a um jogador.
- * 
- * @param jogador O jogador que receberá a carta.
- */
-void Carta::entregarCarta(Jogador jogador){
-    this->jogador = jogador;
 }
 
 /**

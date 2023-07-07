@@ -150,7 +150,7 @@ void Partida::iniciarPartida(){
         if(mao.getResultado()){
             mao.fim_mao(); /**< Finaliza a mão e incrementa a pontuação da dupla vencedora. */
         }
-        if(verificarVencedor){
+        if(verificarVencedor()){
             imprimirParabens(); /**< Imprime uma mensagem de parabéns para a dupla vencedora. */
             imprimirTrofeu(); /**< Imprime um troféu para a dupla vencedora. */
             imprimirPartida(); /**< Imprime o estado atual da partida. */

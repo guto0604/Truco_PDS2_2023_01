@@ -13,10 +13,8 @@
  * @param mao O jogador que será a mão na rodada.
  * @param partida A partida em que a rodada está ocorrendo.
  */
-Rodada::Rodada(int rodada, Jogador mao, Partida partida){
-    this->rodada = rodada; /**< Inicializa o número da rodada. */
-    Jogador mao; /**< Cria um objeto Jogador chamado mao. */
-    this->mao.copy(mao); /**< Copia o jogador mao para o atributo mao da rodada. */
+Rodada::Rodada(Jogador mao, Partida partida){
+    this->mao = mao; /**< Copia o jogador mao para o atributo mao da rodada. */
     this->partida = partida; /**< Inicializa a partida. */
     resultado = false; /**< Inicializa o resultado da rodada como falso. */
     definirOrdem(); /**< Define a ordem dos jogadores na rodada. */
@@ -25,7 +23,7 @@ Rodada::Rodada(int rodada, Jogador mao, Partida partida){
 /**
  * @brief Obtém o resultado da rodada.
  * 
- * @return Verdadeiro se a rodada teve resultado, falso caso contrário.
+ * @return Verdadeiro se a rodada teve vencedor, falso em caso de empate.
  */
 bool Rodada::getResultado(){
     return resultado; /**< Retorna o resultado da rodada. */
@@ -64,8 +62,8 @@ Jogador Rodada::jogar(){
         cartas[i] = ordem[i].jogarCarta(); /**< Cada jogador joga uma carta. */
         std::cout << cartas[i].getCarta(); /**< Imprime a carta jogada na rodada. */
     }
-    if(definirVencedor() == 0){
-        return mao; /**< Retorna a mão se a rodada não teve resultado. */
+    if(definirVencedor() == -1){
+        return mao; /**< Retorna o jogador mão se a rodada terminou empatada. */
     }
     else{
         return vencedor; /**< Retorna o jogador vencedor da rodada. */
@@ -78,23 +76,23 @@ Jogador Rodada::jogar(){
  * @return O índice do jogador vencedor, ou 0 se a rodada não teve resultado.
  */
 int Rodada::definirVencedor(){
-    Carta maior = cartas[0];
-    int j = 0;
-    int n = 1;
+    Carta maior = cartas[0]; /**< A carta de maior valor. */
+    int j = 0; /**< O jogador que jogou a carta de maior valor. */
+    int n = 1; /**< O número de cartas com o maior valor. */
     for(int i = 1; i < cartas.size(); i++){
         if(cartas[i].getValor() > maior.getValor()){
-            maior =cartas[i];
+            maior = cartas[i];
             j = i;
             n = 1;
         }
-        else if(cartas[i].getValor() == maior.getValor()){
+        else if(cartas[i].getValor() == maior.getValor()){ /**< Empate. */
             n += 1;
-            j = 0;
+            j = -1;
         }
     }
-    if(j != 0){
+    if(j != -1){
         vencedor = ordem[j];
         resultado = true;
     }
-    return j; /**< Retorna o índice do jogador vencedor, ou 0 se a rodada não teve resultado. */
+    return j; /**< Retorna o índice do jogador vencedor, ou -1 se a rodada terminou empatada. */
 }

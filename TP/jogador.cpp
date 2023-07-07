@@ -65,7 +65,7 @@ int Jogador::getDupla() const {
  * @brief Recebe as cartas do baralho para uma jogada.
  * 
  * @param baralho O baralho de cartas.
- * @param jogada O número da jogada.
+ * @param jogada O número do jogador na ordem.
  */
 void Jogador::receberCartas(Baralho baralho, int jogada){
     for(int i = 0; i < 3; i++){
