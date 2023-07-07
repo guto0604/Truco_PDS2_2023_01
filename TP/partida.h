@@ -20,7 +20,8 @@ class Partida {
 private:
     std::vector<Jogador> jogadores; /**< Os jogadores que participam da partida. */
     std::vector<Dupla> dupla; /**< As duplas que participam da partida. */
-    int rodada; /**< O número da rodada atual. */
+    int rodada; /**< O jogador que embaralha na rodada atual */
+    void setRodada(); /**< Define a próxima rodada. */
 
 public:
     Partida(); /**< Construtor padrão da classe Partida. */
@@ -28,7 +29,6 @@ public:
     void copy(Partida p);
     void definirDuplas();
     Dupla getDupla(int i); /**< Obtém a dupla com o índice especificado. */
-    bool setRodada(); /**< Define a próxima rodada. */
     void iniciarMao(); /**< Inicia uma mão. */
     bool incrementarPontuacaoDupla(Dupla dupla, int pontos); /**< Incrementa a pontuação de uma dupla. */
     bool verificarVencedor() const; /**< Verifica se alguma dupla venceu a partida. */

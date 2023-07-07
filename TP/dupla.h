@@ -20,6 +20,12 @@
 class Dupla{
 public:
     /**
+     * @brief Construtor padrão da classe Dupla.
+     * 
+     */
+    Dupla();
+    
+    /**
      * @brief Construtor da classe Dupla.
      * 
      * @param j1 O primeiro jogador da dupla.

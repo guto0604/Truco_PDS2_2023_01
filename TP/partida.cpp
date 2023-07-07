@@ -48,7 +48,7 @@ void Partida::definirDuplas(){
  * 
  * @return Verdadeiro se a rodada foi definida com sucesso, falso caso contrário.
  */
-bool Partida::setRodada(){
+void Partida::setRodada(){
     rodada +=1; /**< Incrementa o número da rodada. */
     if(rodada == 4){
         rodada = 0; /**< Volta para a primeira rodada se atingiu o limite. */
@@ -145,9 +145,9 @@ Dupla Partida::getDupla(int i){
  */
 void Partida::iniciarPartida(){
     while(true){
-        Mao mao(jogadores[rodada], this); /**< Cria uma nova mão. */
+        Mao mao(jogadores[rodada], *this); /**< Cria uma nova mão. */
         mao.comecar_mao(); /**< Inicia a mão. */
-        if(mao.getVencedor() != nullptr){
+        if(mao.getResultado()){
             mao.fim_mao(); /**< Finaliza a mão e incrementa a pontuação da dupla vencedora. */
         }
         if(verificarVencedor){

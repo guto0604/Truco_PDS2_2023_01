@@ -12,18 +12,19 @@
  * @param embaralhou O jogador que embaralhou as cartas.
  * @param partida A partida em que a mão está sendo jogada.
  */
-Mao::Mao(Jogador embaralhou, Partida p){
+Mao::Mao(Jogador embaralhou, Partida partida){
     Baralho baralho(); /**< O baralho de cartas. */
     Partida partida();
     Jogador embaralhou(); /**< O jogador que embaralhou as cartas. */
-    partida.copy(p); /**< A partida em que a mão está sendo jogada. */
-    this->embaralhou.copy(embaralhou); /**< Copia os dados do jogador embaralhou. */
+    this->partida = partida; /**< A partida em que a mão está sendo jogada. */
+    this->embaralhou = embaralhou; /**< Copia os dados do jogador embaralhou. */
     rodada = 1; /**< O número da rodada atual. */
     for(int i = 0; i < 1; i++){
         rodadasVencidas[i] = 0; /**< O número de rodadas vencidas por cada dupla. */
     }
     pontuacaoAlvo = 2; /**< A pontuação alvo para vencer a mão. */
     pontuacao = 2; /**< A pontuação atual da mão. */
+    resultado = false; /**< Indica se houve um vencedor na mão. */
     truco = false; /**< Indica se foi solicitado truco. */
     seis = false; /**< Indica se foi solicitado seis. */
     nove = false; /**< Indica se foi solicitado nove. */
@@ -98,17 +99,16 @@ void Mao::pedir_doze(){
  */
 void Mao::comecar_mao(){
     Jogador mao = ordem[1]; /**< O jogador que começa a mão. */
-    bool resultado;
-    for(int i = 1; i < 3; i++){
+    for(int i = 1; i < 3 & !resultado; i++){
         if(rodada == 1){
-            mao = ordem[1]; /**< Define o jogador da mão como o segundo jogador da ordem. */
+            mao = ordem[1]; /**< Define o jogador mão como o primeiro jogador da ordem. */
         }
         Rodada r(rodada, mao, partida); /**< Cria uma nova rodada. */
         r.definirOrdem(); /**< Define a ordem de jogada na rodada. */
-        mao = r.jogar(); /**< Realiza a rodada e obtém o próximo jogador da mão. */
+        mao = r.jogar(); /**< Realiza a rodada e obtém o próximo jogador mão. */
         if(r.getResultado()){
             Jogador vencedor = r.getVencedor(); /**< O jogador vencedor da rodada. */
-            int duplaVencedora = vencedor.getDupla();
+            int duplaVencedora = vencedor.getDupla(); /**< A dupla do jogador que venceu a rodada. */
             rodadasVencidas[duplaVencedora] += 1; /**< Incrementa o número de rodadas vencidas pela dupla do jogador vencedor. */
         }
         else{
@@ -117,6 +117,7 @@ void Mao::comecar_mao(){
         for(int i = 0; i < 1; i++){
             if(rodadasVencidas[i] >= pontuacaoAlvo){
                 vencedor = partida.getDupla(i); /**< Obtém a dupla vencedora da mão. */
+                resultado = true;
             }
         }
     }
@@ -129,9 +130,17 @@ void Mao::fim_mao(){
     partida.incrementarPontuacaoDupla(vencedor, pontuacao); /**< Incrementa a pontuação da dupla vencedora. */
 }
 
+/**
+ * @brief Obtém se a mão foi vencida por alguma dupla.
+ * 
+ * @return bool se house vencedor
+ */
+bool Mao::getResultado(){
+    return resultado; /**< Retorna a dupla vencedora da mão. */
+}
 
 /**
- * @brief Obtém a dupla vencedora da mão.
+ * @brief Obtém a se houve um vencedor na mão.
  * 
  * @return A dupla vencedora da mão.
  */
