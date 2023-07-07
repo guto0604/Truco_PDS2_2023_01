@@ -82,13 +82,28 @@ void Jogador::receberCartas(Baralho baralho, int jogada){
  */
 Carta Jogador::jogarCarta(){
     while(true){
+        std::cout << "Suas cartas:" << std::endl;
+        for (int i = 0; i < cartas.size(); i++){
+            if(!cartas[i].jogada()){
+                std::cout << i << ": " << cartas[i].getCarta() << std::endl;
+            }
+        }
+        std::cout << "Índice da carta a ser jogada: " << std::endl;
         int jogar;
-        std::cin >> jogar;
+        while(true){
+            std::cin >> jogar;
+            if(jogar >= 0 & jogar < cartas.size()){
+                break;
+            }
+            else{
+                std::cout << "Carta não existe, digite um número válido" << std::endl;
+            }
+        }
         if(!cartas[jogar].jogada()){
             return cartas[jogar];
         }
         else{
-            std::cout << "Carta " << cartas[jogar].getCarta() << " já jogada";
+            std::cout << "Carta " << cartas[jogar].getCarta() << " já jogada" << std::endl;
         }
     }
 }

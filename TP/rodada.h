@@ -25,7 +25,7 @@ private:
     std::vector<Jogador> ordem; /**< A ordem dos jogadores na rodada. */
     bool resultado; /**< Indica se houve um vencedor (true) ou empate (false). */
     Jogador vencedor; /**< O jogador vencedor da rodada. */
-    
+    void aumentarPontuacao();
     void definirOrdem(); /**< Define a ordem dos jogadores na rodada. */
     int definirVencedor(); /**< Define o vencedor da rodada e retorna seu índice. */
 

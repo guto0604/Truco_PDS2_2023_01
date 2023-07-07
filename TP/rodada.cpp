@@ -59,8 +59,13 @@ void Rodada::definirOrdem(){
  */
 Jogador Rodada::jogar(){
     for(int i = 0; i < ordem.size(); i++){
+        std::string aumentar;
+        std::cout << "Aumentar pontuação da rodada?" << std::endl;
+        if(aumentar == "Sim"){
+            aumentarPontuacao();
+        }
         cartas[i] = ordem[i].jogarCarta(); /**< Cada jogador joga uma carta. */
-        std::cout << cartas[i].getCarta(); /**< Imprime a carta jogada na rodada. */
+        std::cout << cartas[i].getCarta(); /**< Imprime a carta jogada. */
     }
     if(definirVencedor() == -1){
         return mao; /**< Retorna o jogador mão se a rodada terminou empatada. */
@@ -95,4 +100,8 @@ int Rodada::definirVencedor(){
         resultado = true;
     }
     return j; /**< Retorna o índice do jogador vencedor, ou -1 se a rodada terminou empatada. */
+}
+
+void aumentarPontuacao(){
+
 }

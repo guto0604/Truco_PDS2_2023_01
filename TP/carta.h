@@ -17,7 +17,6 @@
 class Carta{
 public:
     Carta(int numero, std::string naipe); /**< Construtor da classe Carta. */
-    void entregarCarta(Jogador jogador); /**< Entrega a carta a um jogador. */
     int getValor(); /**< Obtém o valor da carta. */
     std::string getCarta(); /**< Obtém a representação da carta em forma de string. */
     bool jogada(); /**< Verifica se a carta já foi jogada. */
