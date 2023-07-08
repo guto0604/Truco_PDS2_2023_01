@@ -1,3 +1,12 @@
+### OBSERVAÇÃO DE COMPILAÇÃO
+Desenvolvemos um projeto inicial, que compila e pode ser jogado da maneira desejada inicialmente.
+
+Depois disso, começamos a incrementar e adaptar com os conceitos e métodos de POO da disciplina. Porém não conseguimos fazer o arquivo compilar e vamos deixar ambas versões em pastas separadas.
+
+TP_FINAL = Versão estruturada e aplicando os conceitos. Não compila
+
+TP_INICIAL = Compila, não aplica todos os conceitos
+
 # Truco_PDS2_2023_01
 Repositório para armazenar os códigos e informações do projeto de PDS2 da UFMG.
 
@@ -91,8 +100,11 @@ Para compilar o arquivo, é necessário clonar (ou baixar) o repositório. Depoi
 
 A compilação é feita por meio do g++17, conforme orientado, e é a versão que o programa foi desenvolvido. 
 
-Para compilar o programa é necessário executar o comando a seguir dentro da pasta:
+Para compilar o TP_FINAL é necessário executar o comando a seguir dentro da pasta:
 g++ -std=c++17 main.cpp baralho.cpp carta.cpp dupla.cpp jogador.cpp mao.cpp partida.cpp rodada.cpp  -o <nome_binario>
+
+Para compilar o TP_INICIAL é necessário executar o comando a seguir dentro da pasta:
+ g++ -std=c++17 main.cpp baralho.cpp jogador.cpp placar.cpp  -o nome_binario>
 
 Para executar o programa e jogar, execute:
 .//<nome_binario>
