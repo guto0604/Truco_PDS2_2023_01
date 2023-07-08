@@ -11,15 +11,45 @@ int main() {
 
     std::vector<Jogador> jogadores(4);
     for (int i = 0; i < 4; ++i) {
-        jogadores[i].setNumero(i+1);
-        std::cout << "Digite o nome do Jogador " << i+1 << ": ";
-        std::string nome;
+    jogadores[i].setNumero(i + 1);
+
+    std::string nome;
+    bool nomeValido = false;
+
+    while (!nomeValido) {
+        std::cout << "Digite o nome do Jogador " << i + 1 << ": ";
         std::cin >> nome;
-        jogadores[i].setNome(nome);
+
+        // Verificar se o nome tem mais de dois dígitos
+        if (nome.length() > 2) {
+            // Verificar se o nome contém apenas caracteres (letras)
+            bool apenasCaracteres = true;
+            for (char c : nome) {
+                if (!isalpha(c)) {
+                    apenasCaracteres = false;
+                    break;
+                }
+            }
+
+            // Verificar se o nome não contém a contrabarra '\'
+            bool semContrabarra = (nome.find('\\') == std::string::npos);
+
+            if (apenasCaracteres && semContrabarra) {
+                nomeValido = true;
+            } else {
+                std::cout << "Nome inválido. Digite novamente." << std::endl;
+            }
+        } else {
+            std::cout << "Nome inválido. Digite novamente." << std::endl;
+        }
     }
+
+    jogadores[i].setNome(nome);
+}
 
     std::string nomeDupla1 = jogadores[0].getNome() + " - " + jogadores[2].getNome();
     std::string nomeDupla2 = jogadores[1].getNome() + " - " + jogadores[3].getNome();
+
 
     Placar placar(nomeDupla1, nomeDupla2);
 
@@ -38,8 +68,8 @@ int main() {
     }
 
     std::vector<int> chosenCards;
-    std::vector<int> team1Scores(3, 0);  // Scores for Team 1 (players 1 and 3)
-    std::vector<int> team2Scores(3, 0);  // Scores for Team 2 (players 2 and 4)
+    std::vector<int> team1Scores(3, 0);  // Pontuacao time 1 (Jogador 1 e 3)
+    std::vector<int> team2Scores(3, 0);  // Pontuacao time 2 (Jogador 2 e 4)
     
     int valor_da_mao;
 
@@ -50,7 +80,7 @@ int main() {
 
         int numCards = (turn == 1) ? 1 : (turn == 2) ? 2 : 1;
 
-        // Choose cards for each player
+        // Escolhe as cartas para cada jogador
         for (int i = 0; i < 4; ++i) {
              std::cout << "Jogador " << jogadores[i].getNumero() << " (" << jogadores[i].getNome() << "), escolha 1 carta:" << std::endl;
 
@@ -216,7 +246,7 @@ int main() {
             
 
             // Fim dos trucos
-            chosenCard--;  // Adjust input to match vector index (0-based)
+            chosenCard--;  
             chosenCards.push_back(chosenCard);
         }
 
@@ -227,7 +257,7 @@ int main() {
             std::cout << "Jogador " << jogadores[i].getNumero() << " (" << jogadores[i].getNome() << "): " << cartasJogadores[i][chosenCards[i]].first << std::endl;
         }
 
-        // Determine winners in the current turn
+        // Determina o voencedor do turno
         int highestPlayer = -1;
         int highestValue = 0;
         bool tie = false;
@@ -249,16 +279,16 @@ int main() {
 
         if (!tie) {
             if (highestPlayer == 0 || highestPlayer == 2) {
-                // Team 1 (players 1 and 3) wins the round
+                // Time 1 vence
                 team1Scores[turn - 1]++;
                 std::cout << "Dupla 1 (Jogador 1 e Jogador 3) venceu o turno!" << std::endl;
             } else {
-                // Team 2 (players 2 and 4) wins the round
+                // Time 2 vence
                 team2Scores[turn - 1]++;
                 std::cout << "Dupla 2 (Jogador 2 e Jogador 4) venceu o turno!" << std::endl;
             }
         } else {
-            // Check if tie involves members of the same team or different teams
+            // Checa empate no mesmo time
             bool sameTeam = true;
             for (int i = 0; i <= highestPlayers.size(); ++i) {
                 if ((highestPlayers[i - 1] % 2) != (highestPlayers[i] % 2)) {
@@ -269,7 +299,7 @@ int main() {
             
                 
             if (sameTeam) {
-                // Tie between members of the same team, the team wins the round
+                // Empate do mesmo time
                 int team = (highestPlayers[0] % 2) + 1;
                 if (team == 1) {
                     team1Scores[turn - 1]++;
@@ -279,14 +309,14 @@ int main() {
                     std::cout << "Dupla 2 (Jogador 2 e Jogador 4) venceu o turno!" << std::endl;
                 }
             } else {
-                // Tie between members of different teams, both teams get a point
+                // Empate de times diferentes
                 team1Scores[turn - 1]++;
                 team2Scores[turn - 1]++;
                 std::cout << "Empate! Ambas as duplas ganham um ponto." << std::endl;
             }
         }
 
-        // Remove the chosen cards from the available options
+        // Tira as cartas das opcoes
         for (int i = 0; i < 4; ++i) {
             cartasJogadores[i].erase(cartasJogadores[i].begin() + chosenCards[i]);
         }
@@ -310,7 +340,7 @@ int main() {
         std::cout << std::endl;
     }
 
-    // Display the final result
+    // Resultado final
     correu:
     
     int team1TotalScore = 0;
